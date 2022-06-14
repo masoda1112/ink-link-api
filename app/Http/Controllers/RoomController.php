@@ -52,7 +52,7 @@ class RoomController extends Controller
             ], 500);
         }
     }
-    private function addUser(Request $request, Room $room){
+    public function addUser(Request $request, Room $room){
         // authenticateからid取得する方法が分かり次第書き換える
         // als_keyの発効の仕方調べ次第response書き換える
         $user_id = 0;
@@ -96,7 +96,7 @@ class RoomController extends Controller
         }
     }
 
-    private function addItem(Request $request){
+    public function selectItem(Request $request){
 
         try{
             $item_id = mt_rand(0, 20);

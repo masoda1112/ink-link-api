@@ -4,19 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
     //create
     public function create(Request $request){
         // リクエストボディはrequest->input()で書く必要があるかも？
+        Log::debug($request->name);
         try{
             $user = new User();
-            $user->name = $request->user_name;
-            $user->sex = $request->user_sex;
-            $user->age = $request->user_age;
-            $user->facebook_id = $request->user_facebook_id;
-            $user->password = $request->user_password;
+            $user->name = $request->name;
+            $user->sex = (bool)$request->sex;
+            $user->age = intval($request->age);
+            $user->facebook_id = $request->facebook_id;
+            $user->password = $request->password;
             $user->status = false;
             $user->save();
             return response()->json([
@@ -50,8 +52,8 @@ class UserController extends Controller
     public function update(Request $request){
         // パスパラメータはrequest->で取得可能
         try{
-            $user = User::find($request->user_id);
-            $user->name = $request->user_name;
+            $user = User::find($request->id);
+            $user->name = $request->name;
             $user->save();
             return response()->json([
                 "name" => $user->name,
