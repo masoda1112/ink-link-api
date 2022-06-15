@@ -7,18 +7,6 @@ use App\Models\User;
 
 class RoomController extends Controller
 {
-    // controller
-    // join→add or create and add
-    // itempull
-    // leave
-    // routeここまで今日終わらせたい
-    // responce設計（陸の欲しがってるjson,ステータスコード500の処理）
-    // 15：FB認証、16：websocket
-    // 17：修正
-    // 18：デプロイ
-    // statusコードは500と201か202
-    // Q：userはuseridで取得して、userモデルから取得する感じか？->yes
-    // itemも同様
     // Q:useridはauthenticateで取得する方法
     public function create(Request $request){
         try{
@@ -52,6 +40,7 @@ class RoomController extends Controller
             ], 500);
         }
     }
+    
     public function addUser(Request $request, Room $room){
         // authenticateからid取得する方法が分かり次第書き換える
         // als_keyの発効の仕方調べ次第response書き換える
