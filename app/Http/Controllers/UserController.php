@@ -53,7 +53,15 @@ class UserController extends Controller
         // パスパラメータはrequest->で取得可能
         try{
             $user = User::find($request->id);
-            $user->name = $request->name;
+            if($request->name){
+                $user->name = $request->name;
+            }
+            if($request->age){
+                $user->age = intval($request->age);
+            }
+            if($request->sex){
+                $user->sex = (bool)$request->sex;
+            }
             $user->save();
             return response()->json([
                 "name" => $user->name,
