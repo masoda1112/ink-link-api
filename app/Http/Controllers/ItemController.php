@@ -11,12 +11,12 @@ class ItemController extends Controller
     public function create(Request $request){
         try{
             $item = new Item();
-            $item->name = $request->item_name;
-            $item->type = $request->item_type;
-            $item->description = $request->item_description;
+            $item->name = $request->name;
+            $item->type = $request->type;
+            $item->description = $request->description;
             $item->save();
             return response()->json([
-                "message" => "room created"
+                "message" => "item created"
             ], 200);
         }catch(Exeption $e){
             return response()->json([
