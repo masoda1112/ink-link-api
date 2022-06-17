@@ -40,7 +40,6 @@ class RoomController extends Controller
             ], 500);
         }
     }
-
     public function addUser(Request $request, Room $room){
         // authenticateからid取得する方法が分かり次第書き換える
         // als_keyの発効の仕方調べ次第response書き換える

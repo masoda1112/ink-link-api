@@ -19,9 +19,3 @@ use App\Http\Controllers\Auth\LoginController;
 Route::get('/', function () {
     return view('masahiro');
 });
-
-Route::get('login/facebook', [LoginController::class, 'redirectToProvider']);
-Route::get('login/facebook/callback', [LoginController::class, 'handleProviderCallback']);
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
