@@ -17,7 +17,7 @@ use App\Http\Controllers\Auth\LoginController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('masahiro');
 });
 
 Route::get('login/facebook', [LoginController::class, 'redirectToProvider']);
