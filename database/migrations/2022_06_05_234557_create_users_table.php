@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('name');
             $table->unsignedBigInteger('age')->nullable();
             $table->boolean('sex')->nullable();
-            $table->string('facebook_id')->nullable();
-            $table->string('password')->nullable();
+            $table->string('firebase_uid')->nullable();
+            $table->string('access_token')->nullable();
             $table->boolean('status');
         });
     }

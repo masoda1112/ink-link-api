@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'api' => [
+            //下記に変更
+            'driver' => 'passport',
+            'provider' => 'users',
+        ],
     ],
 
     /*
