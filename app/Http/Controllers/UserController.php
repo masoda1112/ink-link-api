@@ -5,19 +5,33 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
+use Kreait\Firebase;
 
 class UserController extends Controller
 {
+    /**
+     * @var Firebase
+     */
+    private $firebase;
+
+    /**
+     * コンストラクタインジェクションで $firebase を用意します
+     * @param Firebase $firebase
+     */
+    public function __construct(Firebase $firebase)
+    {
+        $this->firebase = $firebase;
+    }
     //create
     public function create(Request $request, $uid){
         // リクエストボディはrequest->input()で書く必要があるかも？
+        $userName = $this->firebase->getAuth()->getUser($uid)->displayName;
         try{
             $user = new User();
-            $user->name = $request->name;
-            $user->sex = (bool)$request->sex;
-            $user->age = intval($request->age);
+            $user->name = $userName;
+            // $user->sex = (bool)$request->sex;
+            // $user->age = intval($request->age);
             $user->firebase_uid = $uid;
-            $user->password = $request->password;
             $user->status = false;
             $user->save();
             return response()->json([
