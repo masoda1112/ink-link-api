@@ -20,7 +20,7 @@ class FirebaseServiceProvider extends ServiceProvider
     {
         $this->app->singleton(\Kreait\Firebase::class, function () {
 
-            $factory = (new Factory)->withServiceAccount(__DIR__.'../ink-link-43c72-firebase-adminsdk-d4m0p-6e5a5457e9.json');
+            $factory = (new Factory)->withServiceAccount(__DIR__.'ink-link-43c72-firebase-adminsdk-d4m0p-6e5a5457e9.json');
             $database = $factory->createDatabase();
             // 'path/to/firebase-private-key' の部分は書き換えてください
             // $serviceAccount = ServiceAccount::fromJsonFile('../../ink-link-43c72-firebase-adminsdk-d4m0p-6e5a5457e9.json');
