@@ -18,10 +18,7 @@ class UserController extends Controller
      * コンストラクタインジェクションで $firebase を用意します
      * @param Firebase $firebase
      */
-    public function __construct(Firebase $firebase)
-    {
-        $this->firebase = $firebase;
-    }
+    
     //create
     public function create(Request $request, $uid){
         // リクエストボディはrequest->input()で書く必要があるかも？
