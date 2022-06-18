@@ -18,10 +18,10 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-Route::post('v1/users', [UserController::class,"create"]);
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+Route::post('v1/users', [UserController::class,"login"]);
 Route::get('v1/users/{user_id}', [UserController::class,"show"])->middleware('client');
 Route::put('v1/users/{user_id}', [UserController::class,"update"])->middleware('client');
 Route::put('v1/live_rooms/join', [RoomController::class,"join"])->middleware('client');
