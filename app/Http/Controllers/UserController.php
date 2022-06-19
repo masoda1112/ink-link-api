@@ -26,8 +26,8 @@ class UserController extends Controller
     //create
     public function create(Request $request, $uid){
         // リクエストボディはrequest->input()で書く必要があるかも？
-        // $userName = $this->auth->getAuth()->getUser($uid)->displayName;
-        $user = $this->auth.currentUser;
+        $userName = $this->auth->getAuth()->getUser($uid)->displayName;
+        // $user = $this->auth.currentUser;
 
         try{
             $user = new User();
