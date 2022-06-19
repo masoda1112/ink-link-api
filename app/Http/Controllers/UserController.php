@@ -112,7 +112,8 @@ class UserController extends Controller
         // トークンの期限
         // $expires_at = Carbon::now()->addWeeks(1);
 
-        $user->update(['access_token' => $tokenResult->accessToken]);
+        $user->access_token = $tokenResult->accessToken;
+        $user->save();
 
         return response()->json([
             'id' => $user->id,
