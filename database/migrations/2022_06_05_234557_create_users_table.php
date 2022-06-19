@@ -21,7 +21,7 @@ return new class extends Migration
             $table->unsignedBigInteger('age')->nullable();
             $table->boolean('sex')->nullable();
             $table->string('firebase_uid')->nullable();
-            $table->string('access_token')->nullable();
+            $table->longText('access_token')->nullable();
             $table->boolean('status');
         });
     }
