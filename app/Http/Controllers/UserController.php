@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
-use Kreait\Firebase;
+// use Kreait\Firebase;
 
 class UserController extends Controller
 {
@@ -19,7 +19,7 @@ class UserController extends Controller
      * @param Firebase $firebase
     */
     
-    public function __construct(\Kreait\Firebase $firebase)
+    public function __construct(Firebase $firebase)
     {
         $this->firebase = $firebase;
     }
