@@ -104,7 +104,7 @@ class UserController extends Controller
         //uidを使ってトークンを取得
         $user = User::where('firebase_uid', $uid)->first();
         if(!$user){
-            $user = create($request, $uid);
+            $user = $this->create($request, $uid);
         }
 
         $tokenResult = $user->createToken('Personal Access Token');
