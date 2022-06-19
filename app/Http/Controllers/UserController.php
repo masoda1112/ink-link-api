@@ -19,14 +19,16 @@ class UserController extends Controller
      * @param Firebase $firebase
     */
     
-    public function __construct(Firebase $firebase)
+    public function __construct(Auth $auth)
     {
-        $this->firebase = $firebase;
+        $this->auth = $auth;
     }
     //create
     public function create(Request $request, $uid){
         // リクエストボディはrequest->input()で書く必要があるかも？
-        $userName = $this->firebase->getAuth()->getUser($uid)->displayName;
+        // $userName = $this->auth->getAuth()->getUser($uid)->displayName;
+        $user = $this->auth.currentUser;
+        
         try{
             $user = new User();
             $user->name = $userName;
