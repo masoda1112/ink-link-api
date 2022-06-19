@@ -47,7 +47,9 @@ return [
              *
              */
             'credentials' => [
-                'file' => env('FIREBASE_CREDENTIALS', env('GOOGLE_APPLICATION_CREDENTIALS')),
+                // 'file' => env('FIREBASE_CREDENTIALS', env('GOOGLE_APPLICATION_CREDENTIALS')),
+                'file' => env('FIREBASE_CREDENTIALS'),
+
                 /*
                  * If you want to prevent the auto discovery of credentials, set the
                  * following parameter to false. If you disable it, you must
