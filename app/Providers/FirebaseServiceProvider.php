@@ -19,7 +19,7 @@ class FirebaseServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->singleton(\Kreait\Firebase::class, function () {
-            $JSON_PATH = __DIR__.'/../../ink-link-43c72-firebase-adminsdk-d4m0p-6e5a5457e9.json';
+            $JSON_PATH = __DIR__.'/../../secret.json';
             // $factory = (new Factory)->withServiceAccount($JSON_PATH);
             // $database = $factory->createDatabase();
             // 'path/to/firebase-private-key' の部分は書き換えてください
