@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Log;
-use Kreait\Firebase;
+use Kreait\Firebase\Contract\Auth;
 
 class UserController extends Controller
 {
@@ -28,7 +28,7 @@ class UserController extends Controller
         // リクエストボディはrequest->input()で書く必要があるかも？
         // $userName = $this->auth->getAuth()->getUser($uid)->displayName;
         $user = $this->auth.currentUser;
-        
+
         try{
             $user = new User();
             $user->name = $userName;
