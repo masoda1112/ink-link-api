@@ -25,8 +25,7 @@ class FirebaseServiceProvider extends ServiceProvider
             // 'path/to/firebase-private-key' の部分は書き換えてください
             // $serviceAccount = ServiceAccount::fromJsonFile('../../ink-link-43c72-firebase-adminsdk-d4m0p-6e5a5457e9.json');
             return (new Factory())
-            ->withServiceAccount($JSON_PATH)
-            ->createDatabase();
+            ->withServiceAccount($JSON_PATH);
         });
     }
 
