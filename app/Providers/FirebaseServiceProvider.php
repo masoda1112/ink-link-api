@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Kreait\Firebase;
 use Kreait\Firebase\Factory;
 use Kreait\Firebase\ServiceAccount;
 
@@ -25,7 +26,6 @@ class FirebaseServiceProvider extends ServiceProvider
             // $serviceAccount = ServiceAccount::fromJsonFile('../../ink-link-43c72-firebase-adminsdk-d4m0p-6e5a5457e9.json');
             return new Firebase();
         });
-
 
     }
 
