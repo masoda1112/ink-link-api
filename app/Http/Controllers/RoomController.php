@@ -123,7 +123,6 @@ class RoomController extends Controller
         // ランダムな文字列にする
         $room->als_key = md5(uniqid());
         $room->save();
-        dd($room);
         $lastroom = Room::latest()->first();
         $this->addUser($request, $lastroom);
         $lastroom->save();
