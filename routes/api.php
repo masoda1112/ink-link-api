@@ -22,7 +22,7 @@ use App\Http\Controllers\LoginController;
 //     return $request->user();
 // });
 Route::post('v1/users', [UserController::class,"login"]);
-Route::get('v1/users/{user_id}', [UserController::class,"show"])->middleware('client');
+Route::middleware('auth:api')->get('v1/users/{user_id}', [UserController::class,"show"]);
 Route::middleware('auth:api')->put('v1/users/{user_id}', [UserController::class,"update"]);
 Route::middleware('auth:api')->put('v1/live_rooms/join', [RoomController::class,"join"]);
 Route::middleware('auth:api')->put('v1/live_rooms/leave', [RoomController::class,"leave"]);
