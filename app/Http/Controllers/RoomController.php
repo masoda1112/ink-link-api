@@ -31,7 +31,6 @@ class RoomController extends Controller
         }
     }
 
-
     public function join(Request $request){
         try{
             $room = Room::where('status_id', 0)->oldest('updated_at')->get();
@@ -124,6 +123,7 @@ class RoomController extends Controller
         $room->als_key = md5(uniqid());
         $room->save();
         $lastroom = Room::latest()->first();
+        dd($lastroom);
         addUser($request, $lastroom);
         $lastroom->save();
     }
