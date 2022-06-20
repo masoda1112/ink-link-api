@@ -20,7 +20,7 @@ class RoomController extends Controller
 
     public function create(Request $request){
         try{
-            createHelper($request);
+            $this->createHelper($request);
             return response()->json([
                 "message" => "room created"
             ], 200);
@@ -57,7 +57,7 @@ class RoomController extends Controller
         if($room->user_count == 4){
             $room->status_id = 1;
         }else if($room->user_count == 2){
-            selectItem();
+            $this->selectItem();
         }
 
         $room->save();
@@ -123,7 +123,7 @@ class RoomController extends Controller
         $room->als_key = md5(uniqid());
         $room->save();
         $lastroom = Room::latest()->first();
-        addUser($request, $lastroom);
+        $this->addUser($request, $lastroom);
         $lastroom->save();
     }
 
