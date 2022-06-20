@@ -57,8 +57,7 @@ class UserController extends Controller
         // パスパラメータはrequest->で取得可能
         try{
             $cullentUri = explode('/',$_SERVER['REQUEST_URI']);
-            $uri = end($cullentUri);
-            $id = substr($uri, strrpos($uri, '/') + 1);
+            $id = end($cullentUri);
             dd($id);
             $user = User::find($id);
             dd($user);
