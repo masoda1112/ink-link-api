@@ -5,11 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use \GuzzleHttp\Client;
-use Illuminate\Support\Facades\Auth;
+// use Illuminate\Support\Facades\Auth;
+use Kreait\Firebase\Contract\Auth;
 
 class RoomController extends Controller
 {
     private const ALMOSYNC_URL = 'https://juuq-test-api.herokuapp.com';
+
+    public function __construct(Auth $auth)
+    {
+        $this->auth = $auth;
+    }
 
     public function create(Request $request){
         try{
