@@ -116,14 +116,13 @@ class RoomController extends Controller
 
     private function createHelper(Request $request){
         $room = new Room();
-        $room->usercount = 1;
+        $room->user_count = 1;
         // 0:waiting, 1:full, 2:close
         $room->status_id = 0;
         // ランダムな文字列にする
         $room->als_key = md5(uniqid());
         $room->save();
         $lastroom = Room::latest()->first();
-        dd($lastroom);
         addUser($request, $lastroom);
         $lastroom->save();
     }
