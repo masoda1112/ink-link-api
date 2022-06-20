@@ -56,7 +56,9 @@ class UserController extends Controller
     public function show(Request $request){
         // パスパラメータはrequest->で取得可能
         try{
-            $user = User::find($request->id);
+            	
+            $id = end(explode('/', $_SERVER[url()->current()]));
+            $user = User::find($id);
             return response()->json([
                 "name" => $user->name,
                 "age" => $user->age,
