@@ -56,8 +56,7 @@ class UserController extends Controller
     public function show(Request $request){
         // パスパラメータはrequest->で取得可能
         try{
-            	
-            $uri = end(explode('/', $_SERVER[url()->current()]));
+            $uri = end(explode('/', $_SERVER['REQUEST_URI']));
             $id = substr($uri, strrpos($uri, '/') + 1);
             $user = User::find($id);
             return response()->json([
