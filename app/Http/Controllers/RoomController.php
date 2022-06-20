@@ -52,9 +52,8 @@ class RoomController extends Controller
         $user_id = auth()->id();
         $user = User::find($user_id);
 
-        $room->users()->attach($user_id);
+        $room->users()->attach([$user_id,['stay_time' => 0, 'status_id' => 0]]);
         $room->user_count += 1;
-
         if($room->user_count == 4){
             $room->status_id = 1;
         }else if($room->user_count == 2){
@@ -71,7 +70,7 @@ class RoomController extends Controller
 
     public function leaveUser(Request $request, Room $room){
         try{
-            $user_id = auth()->id();;
+            $user_id = auth()->id();
             $user = User::find($user_id);
             $room = Room::find($request->room_id);
             $room->users()->detach($user);
@@ -95,7 +94,6 @@ class RoomController extends Controller
     }
 
     public function selectItem(Request $request){
-
         try{
             $item_id = mt_rand(0, 20);
             $item = Item::find($item_id);

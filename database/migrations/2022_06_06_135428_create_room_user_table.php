@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->foreignId('room_id');
             $table->foreignId('user_id');
-            $table->dateTime('stay_time');
+            $table->integer('stay_time');
             $table->unsignedBigInteger('status_id');
 
             $table
