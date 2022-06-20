@@ -36,9 +36,9 @@ class RoomController extends Controller
         try{
             $room = Room::where('status_id', 0)->oldest('updated_at')->get();
             if($room == null){
-                createHelper($request);
+                $this->createHelper($request);
             }else{
-                addUser($request, $room);
+                $this->addUser($request, $room);
             }
         } catch(Exeption $e){
             return response()->json([
