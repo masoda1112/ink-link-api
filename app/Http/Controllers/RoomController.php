@@ -37,6 +37,7 @@ class RoomController extends Controller
             if(!$room){
                 $this->createHelper($request);
             }else{
+                dd($room);
                 $this->addUser($request, $room);
             }
         } catch(Exeption $e){
