@@ -60,6 +60,7 @@ class UserController extends Controller
             $uri = end($cullentUri);
             $id = substr($uri, strrpos($uri, '/') + 1);
             $user = User::find($id);
+            dd($user);
             return response()->json([
                 "name" => $user->name,
                 "age" => $user->age,
