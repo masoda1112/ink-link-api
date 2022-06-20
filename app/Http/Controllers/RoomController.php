@@ -32,7 +32,6 @@ class RoomController extends Controller
 
 
     public function join(Request $request){
-
         try{
             $room = Room::where('status_id', 0)->oldest('updated_at')->get();
             if($room == null){

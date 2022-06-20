@@ -27,7 +27,10 @@ class UserController extends Controller
     public function create(Request $request, $uid){
         // リクエストボディはrequest->input()で書く必要があるかも？
         // $userName = $this->auth->getUser($uid)->displayName;
-        $userName = "odamasa";
+        $userName = $request->name;
+        if(!$userName){
+            $userName = "test";
+        }
         // $user = $this->auth.currentUser;
 
         try{
@@ -98,7 +101,6 @@ class UserController extends Controller
     {
         // headerからuid取得
         $header = $request->headers;
-        // $idToken = $header['token'];
         $idToken = $header->get('token');
         $uid = $this->getUidByToken($idToken);
         //laravelでtokenを発行する為にlaravelの導入とmodelに追加が必要
