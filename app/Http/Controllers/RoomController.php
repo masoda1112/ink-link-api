@@ -34,10 +34,9 @@ class RoomController extends Controller
     public function join(Request $request){
         try{
             $room = Room::where('status_id', 0)->oldest('updated_at')->get();
-            if(!$room){
+            if($room->isEmpty()){
                 $this->createHelper($request);
             }else{
-                dd($room);
                 $this->addUser($request, $room);
             }
         } catch(Exeption $e){
