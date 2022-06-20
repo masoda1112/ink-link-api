@@ -56,7 +56,7 @@ class RoomController extends Controller
         if($room->user_count == 4){
             $room->status_id = 1;
         }else if($room->user_count == 2){
-            $this->selectItem();
+            $this->selectItem($request, $room);
         }
 
         $room->save();
@@ -92,7 +92,7 @@ class RoomController extends Controller
         }
     }
 
-    public function selectItem(Request $request){
+    public function selectItem(Request $request,Room $room){
         try{
             $item_id = mt_rand(0, 20);
             $item = Item::find($item_id);
