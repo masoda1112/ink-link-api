@@ -58,9 +58,7 @@ class UserController extends Controller
         try{
             $cullentUri = explode('/',$_SERVER['REQUEST_URI']);
             $id = end($cullentUri);
-            dd($id);
             $user = User::find($id);
-            dd($user);
             return response()->json([
                 "name" => $user->name,
                 "age" => $user->age,
