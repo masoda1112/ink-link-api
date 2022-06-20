@@ -51,8 +51,7 @@ class RoomController extends Controller
         // als_keyの発効の仕方調べ次第response書き換える
         $user_id = auth()->id();
         $user = User::find($user_id);
-
-        $room->users()->attach([$user_id,['stay_time' => 0, 'status_id' => 0]]);
+        $room->users()->sync([$user_id,['stay_time' => 0, 'status_id' => 0]]);
         $room->user_count += 1;
         if($room->user_count == 4){
             $room->status_id = 1;
@@ -99,7 +98,7 @@ class RoomController extends Controller
             $item = Item::find($item_id);
             $room = Room::find($request->room_id);
             $room->items()->attach($item);
-            almosyncPost($room);
+            $this->almosyncPost($room);
             $room->save();
     
             return response()->json([

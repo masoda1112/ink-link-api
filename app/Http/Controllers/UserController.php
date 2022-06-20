@@ -29,7 +29,7 @@ class UserController extends Controller
         // $userName = $this->auth->getUser($uid)->displayName;
         $userName = $request->name;
         if(!$userName){
-            $userName = "test";
+            $userName = "nanashisan";
         }
         // $user = $this->auth.currentUser;
 
