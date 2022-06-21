@@ -95,7 +95,7 @@ class RoomController extends Controller
         }
     }
 
-    public function selectItem(Request $request,Room $room){
+    public function selectItem(Request $request){
         try{
             $item_id = mt_rand(0, 20);
             $item = Item::find($item_id);
