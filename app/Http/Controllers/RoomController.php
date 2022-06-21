@@ -115,7 +115,7 @@ class RoomController extends Controller
 
     private function createHelper(Request $request){
         $room = new Room();
-        $room->user_count = 1;
+        $room->user_count = 0;
         // 0:waiting, 1:full, 2:close
         $room->status_id = 0;
         // ランダムな文字列にする
