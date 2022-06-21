@@ -37,7 +37,7 @@ class RoomController extends Controller
         try{
             $room = Room::where('status_id', 0)->oldest('updated_at')->get();
             if($room->isEmpty()){
-                $this->createHelper($request);
+                $room = $this->createHelper($request);
             }else{
                 $this->addUser($request, $room);
             }
@@ -46,6 +46,10 @@ class RoomController extends Controller
                 "message" => "Internal Server Error"
             ], 500);
         }
+        return response()->json([
+            "room_uniq_id" => $room->id,
+            "als_key" => $room->als_key
+        ], 200);
     }
     public function addUser(Request $request, Room $room){
         // authenticateからid取得する方法が分かり次第書き換える
