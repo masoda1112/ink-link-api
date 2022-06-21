@@ -97,7 +97,9 @@ class RoomController extends Controller
 
     public function selectItem(Request $request){
         try{
-            $item_id = mt_rand(0, 20);
+            // テスト後に戻す
+            // $item_id = mt_rand(0, 20);
+            $item_id = 4;
             $item = Item::find($item_id);
             $room = Room::find($request->room_id);
             $room->items()->attach([$item_id => ['created_at' => Carbon::now(), 'updated_at' => Carbon::now(),'using_time' => 0,'status_id' => 0 ]]);
