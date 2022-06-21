@@ -138,6 +138,6 @@ class RoomController extends Controller
         ]);
 
         $options = [];
-        $response = $client->request('POST','/api/v1/messages/cards',['form_params' => ['almosync_key' => $room->als_key]]);
+        $response = $client->request('POST','/api/v1/messages/card',['form_params' => ['almosync_key' => $room->als_key]]);
     }
 }
