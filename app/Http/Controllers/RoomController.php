@@ -132,12 +132,11 @@ class RoomController extends Controller
     }
 
     private function almosyncPost(Room $room){
-        $ALMOSYNC_URL = 'https://juuq-test-api.herokuapp.com';
+        $ALMOSYNC_URL = 'https://almosync-test-api.herokuapp.com/';
         $client = new Client([
             'base_uri' => $ALMOSYNC_URL,
         ]);
 
-        $method = 'POST';
         $options = [];
         $response = $client->request('POST','/api/v1/messages/cards',['form_params' => ['almosync_key' => $room->als_key]]);
     }
