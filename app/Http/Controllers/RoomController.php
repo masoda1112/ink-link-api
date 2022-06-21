@@ -128,6 +128,7 @@ class RoomController extends Controller
         $lastroom = Room::latest()->first();
         $this->addUser($request, $lastroom);
         $lastroom->save();
+        return $lastroom;
     }
 
     private function almosyncPost(Room $room){
