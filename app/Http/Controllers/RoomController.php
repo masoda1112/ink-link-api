@@ -60,8 +60,6 @@ class RoomController extends Controller
         $room->user_count += 1;
         if($room->user_count == 4){
             $room->status_id = 1;
-        }else if($room->user_count == 2){
-            $this->selectItem($request, $room);
         }
 
         $room->save();
@@ -75,9 +73,9 @@ class RoomController extends Controller
     public function leaveUser(Request $request, Room $room){
         try{
             $user_id = auth()->id();
-            $user = User::find($user_id);
+            // $user = User::find($user_id);
             $room = Room::find($request->room_id);
-            $room->users()->detach($user);
+            $room->users()->detach($user_id);
             $room->user_count -= 1;
     
             if($room->user_count <= 0){
@@ -102,12 +100,14 @@ class RoomController extends Controller
             $item_id = mt_rand(0, 20);
             $item = Item::find($item_id);
             $room = Room::find($request->room_id);
-            $room->items()->attach($item);
+            $room->items()->attach([$item_id => ['created_at' => Carbon::now(), 'updated_at' => Carbon::now(),'using_time' => 0,'status__id' => 0 ]]);
             $this->almosyncPost($room);
             $room->save();
-    
             return response()->json([
-                "message" => "room updated"
+                "message" => "room updated",
+                "item_id" => $item->id,
+                "item_name" => $item->name,
+                "item_description" => $item->description
             ], 200);
 
         }catch(Exeption $e){
