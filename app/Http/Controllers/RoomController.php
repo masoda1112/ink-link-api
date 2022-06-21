@@ -13,8 +13,6 @@ use Kreait\Firebase\Contract\Auth;
 
 class RoomController extends Controller
 {
-    private const ALMOSYNC_URL = 'https://juuq-test-api.herokuapp.com';
-
     public function __construct(Auth $auth)
     {
         $this->auth = $auth;
@@ -134,8 +132,9 @@ class RoomController extends Controller
     }
 
     private function almosyncPost(Room $room){
+        $ALMOSYNC_URL = 'https://juuq-test-api.herokuapp.com';
         $client = new Client([
-            'base_uri' => ALMOSYNC_URL,
+            'base_uri' => $ALMOSYNC_URL,
         ]);
 
         $method = 'POST';
