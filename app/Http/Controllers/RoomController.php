@@ -100,7 +100,7 @@ class RoomController extends Controller
             $item_id = mt_rand(0, 20);
             $item = Item::find($item_id);
             $room = Room::find($request->room_id);
-            $room->items()->attach([$item_id => ['created_at' => Carbon::now(), 'updated_at' => Carbon::now(),'using_time' => 0,'status__id' => 0 ]]);
+            $room->items()->attach([$item_id => ['created_at' => Carbon::now(), 'updated_at' => Carbon::now(),'using_time' => 0,'status_id' => 0 ]]);
             $this->almosyncPost($room);
             $room->save();
             return response()->json([

@@ -17,9 +17,9 @@ class ItemController extends Controller
             $item->save();
             return response()->json([
                 "id" => $item->id,
-                "nam" => $item->name,
+                "name" => $item->name,
                 "type" => $item->type,
-                "type" => $item->description,
+                "description" => $item->description,
                 "message" => "item created"
             ], 200);
         }catch(Exeption $e){
