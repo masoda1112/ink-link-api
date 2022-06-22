@@ -33,7 +33,7 @@ class RoomController extends Controller
 
     public function join(Request $request){
         try{
-            $room = Room::where('status_id', 0)->oldest('updated_at')->get();
+            $room = Room::where('status_id', 0)->oldest('updated_at')->first();
             if($room->isEmpty()){
                 $room = $this->createHelper($request);
             }else{
@@ -49,11 +49,12 @@ class RoomController extends Controller
             "als_key" => $room->als_key
         ], 200);
     }
-    public function addUser(Request $request, $room){
+    public function addUser(Request $request,Room $room){
         // authenticateからid取得する方法が分かり次第書き換える
         // als_keyの発効の仕方調べ次第response書き換える
         $user_id = auth()->id();
         $user = User::find($user_id);
+        // たぶんroomの型がおかしい（correlctionn
         $room->users()->attach([$user_id => ['created_at' => Carbon::now(), 'updated_at' => Carbon::now(),'stay_time' => 0, 'status_id' => 0]]);
         $room->user_count += 1;
         if($room->user_count == 4){
