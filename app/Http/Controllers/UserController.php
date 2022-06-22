@@ -32,25 +32,14 @@ class UserController extends Controller
             $userName = "nanashisan";
         }
         // $user = $this->auth.currentUser;
-
-        try{
-            $user = new User();
-            $user->name = $userName;
-            // $user->sex = (bool)$request->sex;
-            // $user->age = intval($request->age);
-            $user->firebase_uid = $uid;
-            $user->status = false;
-            $user->save();
-            return response()->json([
-                "name" => $user->name,
-                "age" => $user->age,
-                "sex" => $user->sex,
-            ], 200);
-        }catch(Exeption $e){
-            return response()->json([
-                "message" => "Internal Server Error"
-            ], 500);
-        }
+        $user = new User();
+        $user->name = $userName;
+        // $user->sex = (bool)$request->sex;
+        // $user->age = intval($request->age);
+        $user->firebase_uid = $uid;
+        $user->status = false;
+        $user->save();
+        return $user;
     }
 
     public function show(Request $request){
