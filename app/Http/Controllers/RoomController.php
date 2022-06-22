@@ -50,7 +50,7 @@ class RoomController extends Controller
             "als_key" => $room->als_key
         ], 200);
     }
-    public function addUser(Request $request, Room $room){
+    public function addUser(Request $request, $room){
         // authenticateからid取得する方法が分かり次第書き換える
         // als_keyの発効の仕方調べ次第response書き換える
         $user_id = auth()->id();
