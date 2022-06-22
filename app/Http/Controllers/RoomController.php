@@ -54,8 +54,8 @@ class RoomController extends Controller
         // als_keyの発効の仕方調べ次第response書き換える
         $user_id = auth()->id();
         $user = User::find($user_id);
+        dd($user, $room);
         $room->users()->attach([$user_id => ['created_at' => Carbon::now(), 'updated_at' => Carbon::now(),'stay_time' => 0, 'status_id' => 0]]);
-        dd($room);
         $room->user_count += 1;
         if($room->user_count == 4){
             $room->status_id = 1;
