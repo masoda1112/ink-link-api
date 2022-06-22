@@ -68,7 +68,7 @@ class RoomController extends Controller
         ], 200);
     }
 
-    public function leaveUser(Request $request, Room $room){
+    public function leaveUser(Request $request){
         try{
             $user_id = auth()->id();
             // $user = User::find($user_id);
