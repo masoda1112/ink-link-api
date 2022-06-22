@@ -34,7 +34,7 @@ class RoomController extends Controller
     public function join(Request $request){
         try{
             $room = Room::where('status_id', 0)->oldest('updated_at')->first();
-            if($room->isEmpty()){
+            if(!$room){
                 $room = $this->createHelper($request);
             }else{
                 $this->addUser($request, $room);
@@ -49,7 +49,7 @@ class RoomController extends Controller
             "als_key" => $room->als_key
         ], 200);
     }
-    public function addUser(Request $request,Room $room){
+    public function addUser(Request $request, Room $room){
         // authenticateからid取得する方法が分かり次第書き換える
         // als_keyの発効の仕方調べ次第response書き換える
         $user_id = auth()->id();
