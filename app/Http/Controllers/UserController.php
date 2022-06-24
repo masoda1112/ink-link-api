@@ -96,7 +96,7 @@ class UserController extends Controller
 
         $header = getallheaders();
         $authorization = $header['Authorization'];
-        $idToken = ltrim($authorization, 'Bearer ');;
+        $idToken = ltrim($authorization, 'Bearer');
         $uid = $this->getUidByToken($idToken);
         dd($uid);
         //laravelでtokenを発行する為にlaravelの導入とmodelに追加が必要
