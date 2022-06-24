@@ -93,7 +93,9 @@ class UserController extends Controller
         // headerからuid取得
         $header = $request->headers;
         $idToken = $header->get('token');
-        $uid = $this->getUidByToken($idToken);
+        // $uid = $this->getUidByToken($idToken);
+        $uid = $auth()->user();
+        dd($uid);
         //laravelでtokenを発行する為にlaravelの導入とmodelに追加が必要
         //uidを使ってトークンを取得
         $user = User::where('firebase_uid', $uid)->first();
